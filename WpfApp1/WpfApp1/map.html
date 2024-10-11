@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Maps in WPF</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <style>
+        html, body, #myMap {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="myMap"></div>
+    <script>
+        var map = new atlas.Map('myMap', {
+               center: [26.096, 44.439],
+               zoom: 12,
+               view: 'Auto',
+               authOptions: {
+                   authType: 'subscriptionKey',
+                   subscriptionKey: 'YL8SXs6p9WgmDC08xU27p6hKHhuIbocXrCiHtBuVXaWi5K9ZpF5XJQQJ99AJACi5YpzI4cMfAAAgAZMPcGXB'
+               }
+        });
+
+        function addPin(pinList) {
+            
+            for (var i in pinList) {
+
+                const item = pinList[i];
+
+                var pin = new atlas.HtmlMarker({
+                    color: 'DodgerBlue',
+                    text: item.id,
+                    position: [item.lat, item.long]
+                });
+
+                map.markers.add(pin);
+            }
+        }
+    </script>
+</body>
+</html>

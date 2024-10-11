@@ -4,15 +4,35 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Label"
-               HorizontalAlignment="Left"
-               Height="40"
-               Margin="76,75,0,0"
-               VerticalAlignment="Top"
-               Width="106" />
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Right" Width="200">
+                <StackPanel>
+                    <Button x:Name="btnAction1"
+                            Click="btnAction1_Click"
+                            Content="Test map pins"
+                            Width="Auto"
+                            Height="30" />
+                    <Button x:Name="btnAction2"
+                            Click="btnAction2_Click"
+                            Content="Load markers"
+                            Width="Auto"
+                            Height="30" />
+                    <Button x:Name="btnAction3"
+                            Click="btnAction3_Click"
+                            Content="Load soldier movement"
+                            Width="Auto"
+                            Height="30" />
+                </StackPanel>
+
+            </DockPanel>
+            <wv2:WebView2 Name="webView" 
+                          WebMessageReceived="webView_WebMessageReceived"
+                          />
+        </DockPanel>
 
     </Grid>
 </Window>
